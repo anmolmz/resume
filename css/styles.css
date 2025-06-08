@@ -10871,6 +10871,9 @@ p.lead {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+#sideNav {
+  background: linear-gradient(135deg, #0d6efd 0%, #1e90ff 100%);
+}
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
@@ -10956,6 +10959,17 @@ section.resume-section {
 section.resume-section .resume-section-content {
   width: 100%;
 }
+
+.resume-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-in-out;
+}
+.resume-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
 
 @media (min-width: 768px) {
   section.resume-section {
