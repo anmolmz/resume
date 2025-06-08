@@ -6,19 +6,19 @@
 //
 // Scripts
 // 
-
 window.addEventListener('DOMContentLoaded', event => {
+    console.log('%cWelcome to Anmol Mazoo\'s Resume Site!', 'color: #0d6efd; font-size: 16px; font-weight: bold;');
 
-    // Activate Bootstrap scrollspy on the main nav element
+    // ScrollSpy activation
     const sideNav = document.body.querySelector('#sideNav');
     if (sideNav) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#sideNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
 
-    // Collapse responsive navbar when toggler is visible
+    // Collapse navbar
     const navbarToggler = document.body.querySelector('.navbar-toggler');
     const responsiveNavItems = [].slice.call(
         document.querySelectorAll('#navbarResponsive .nav-link')
@@ -31,6 +31,25 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
+    // Section fade-in on scroll
+    const sections = document.querySelectorAll('.resume-section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+
+    // Log active section on scroll
+    document.addEventListener('activate.bs.scrollspy', function (event) {
+        const activeSection = document.querySelector('.nav-link.active');
+        if (activeSection) {
+            console.log('Currently viewing section:', activeSection.textContent);
+        }
+    });
 });
